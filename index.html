@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sharma Print</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="login" class="login-screen">
+  <div class="login-card"><div class="logo">SP</div><h1>Sharma Print</h1><p>Service Portal</p>
+    <form id="loginForm"><input id="username" value="demo" placeholder="Username" required><input id="password" value="demo123" type="password" placeholder="Password" required><button>Login</button></form>
+    <small>Demo account: demo / demo123</small>
+  </div>
+</div>
+
+<div id="app" class="hidden">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">SP</div><div><b>Sharma Print</b><small>Service Portal</small></div></div>
+  <nav>
+    <a class="active" href="#home">⌂ <span data-i="home">Home</span></a>
+    <a href="#services">▦ <span data-i="services">Services</span></a>
+    <a href="#wallet">₹ <span data-i="wallet">Wallet</span></a>
+    <a href="#transactions">▤ <span data-i="transactions">Transactions</span></a>
+    <a href="#support">◉ <span data-i="support">Support</span></a>
+    <a href="#profile">◯ <span data-i="profile">Profile</span></a>
+    <a href="#logout" onclick="logout()">⇥ <span data-i="logout">Logout</span></a>
+  </nav>
+  <button class="night" onclick="document.body.classList.toggle('dark')">◐ <span data-i="night">Night mode</span></button>
+</aside>
+
+<main class="main">
+<header class="topbar"><button class="menu" onclick="document.body.classList.toggle('open')">☰</button>
+  <div class="top-brand"><div class="logo mini">SP</div><b>Sharma Print</b></div>
+  <div class="top-actions">
+    <div class="lang"><button onclick="toggleLang()">🌐 <span id="langLabel">English</span> ▾</button><div id="langMenu" class="lang-menu">
+      <button onclick="setLang('hi')">🟠 Hindi / हिंदी</button><button onclick="setLang('en')">🔵 English</button><button onclick="setLang('hinglish')">🟣 Hinglish</button>
+    </div></div>
+    <div class="wallet-pill">▣ <span id="wallet">₹0.00</span></div><div class="verified"><span></span><b id="verification">Unverified</b></div><div class="avatar" id="avatar">SP</div>
+  </div>
+</header>
+
+<section id="home" class="hero"><div><p class="eyebrow" data-i="welcome">WELCOME BACK</p><h1>Hello, <span id="name">Customer</span> 👋</h1><p data-i="heroText">Manage services, wallet and applications from one secure dashboard.</p></div></section>
+<div class="banner"><div><b>PAN • VOTER • AADHAAR</b><strong>Authorised services, all in one place</strong></div><span>›</span></div>
+
+<section id="services"><div class="section-head"><div><p class="eyebrow" data-i="servicesEyebrow">SERVICES</p><h2 data-i="available">Available Services</h2></div></div>
+<div id="serviceGrid" class="grid"></div></section>
+
+<section id="transactions" class="panel"><div class="section-head"><div><p class="eyebrow">ACTIVITY</p><h2 data-i="lastActivity">Last Account Activity</h2></div></div>
+<div class="table-wrap"><table><thead><tr><th>SERVICE</th><th>TYPE</th><th>AMOUNT</th><th>DESCRIPTION</th><th>DATE TIME</th><th>STATUS</th><th>USERID</th></tr></thead><tbody id="txnBody"></tbody></table></div></section>
+
+<section id="wallet" class="panel wallet-panel">
+  <div>
+    <p class="eyebrow">WALLET</p><h2 data-i="recharge">Recharge Wallet</h2>
+    <p data-i="rechargeText">Minimum recharge ₹20. Pay using any UPI app.</p>
+    <div class="presets">
+      <button type="button" onclick="setAmount(20)">₹20</button>
+      <button type="button" onclick="setAmount(50)">₹50</button>
+      <button type="button" onclick="setAmount(100)">₹100</button>
+      <button type="button" onclick="setAmount(300)">₹300</button>
+      <button type="button" onclick="setAmount(500)">₹500</button>
+      <button type="button" onclick="setAmount(700)">₹700</button>
+    </div>
+    <form id="rechargeForm"><input id="amount" type="number" min="20" step="1" placeholder="Enter amount ₹" required><button data-i="continuePayment">Show QR</button></form>
+  </div>
+  <div id="paymentBox" class="payment-box hidden">
+    <h3>UPI Payment</h3>
+    <img src="/assets/upi-qr.png" alt="UPI QR code">
+    <div class="upi-id">ahadkhan36639-3@okaxis <button type="button" onclick="copyUPI()">Copy</button></div>
+    <p>Scan the QR or pay to the UPI ID. After payment, enter your UPI transaction/reference ID.</p>
+    <input id="utr" placeholder="UPI transaction/reference ID">
+    <button type="button" class="paid-btn" onclick="submitPaymentProof()">I have paid</button>
+    <small id="paymentNote"></small>
+  </div>
+</section>
+
+<footer>© 2026 Sharma Print · Secure service portal</footer>
+</main></div>
+
+<button class="chat-fab" onclick="openChat()">💬</button>
+<div id="chat" class="chat"><div class="chat-head"><div><b>Sharma Print Support</b><small>AI Assistant</small></div><button onclick="closeChat()">×</button></div><div id="chatBody" class="chat-body"><div class="msg bot">Hello! 👋 How can I help you?</div></div><form id="chatForm" class="chat-input"><input id="chatInput" placeholder="Type your question…"><button>➤</button></form></div>
+<script src="/app.js"></script>
+</body></html>
