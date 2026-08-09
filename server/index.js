@@ -2,7 +2,7 @@ require("dotenv").config();
 const express=require("express");
 const path=require("path");
 const crypto=require("crypto");
-const { db, sha256 } = require("./db/database");
+const { db, sha256 } = require("./database");
 const { panService, voterService, aadhaarService, digiLockerService } = require("./providers");
 const app=express();
 app.use(express.json({limit:"100kb"}));
